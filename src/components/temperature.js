@@ -4,6 +4,7 @@ import {observer} from 'mobx-react';
 import {Component} from 'react';
 
 export default class Temperature {
+  @observable unit = "C";
   @observable temperatureCelsius = 25;
 
   @computed get temperatureFahrenheit() {
@@ -13,8 +14,6 @@ export default class Temperature {
   @computed get temperatureKelvin() {
     return this.temperatureCelsius + 273.15;
   }
-
-  @observable unit = "C";
 
   @computed get temperature() {
     switch(this.unit) {

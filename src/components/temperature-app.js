@@ -2,9 +2,11 @@ import React from 'react';
 import {observer} from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
-const TemperatureApp = observer(({ temperature }) => (
+const TemperatureApp = observer(({ temperatures }) => (
   <div>
-    {temperature.temperature}
+    {temperatures.map(t =>
+      <div key={t.id}>{t.temperature}</div>
+    )}
     <DevTools />
   </div>
 ));
