@@ -8,8 +8,8 @@ export default class Counter extends Component {
     return (
       <div>
         Counter: {appState.count} <br/>
-        <button onClick={this.handleInc.bind(this)}> + </button>
-        <button onClick={this.handleDec.bind(this)}> - </button>
+        <button onClick={this.handleInc}> + </button>
+        <button onClick={this.handleDec}> - </button>
       </div>
     )
   }
