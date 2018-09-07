@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Counter from './components/counter';
+
 const Index = () => {
-  return <div>Hello React!</div>;
+  return <Counter />;
 };
 
 ReactDOM.render(<Index />, document.getElementById("index"));
