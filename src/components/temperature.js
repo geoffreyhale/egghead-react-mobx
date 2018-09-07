@@ -1,7 +1,11 @@
 import React from 'react';
-import {observable, computed} from 'mobx';
+import {action, computed, configure, observable} from 'mobx';
 import {observer} from 'mobx-react';
 import {Component} from 'react';
+
+configure({
+  enforceActions: 'observed'
+});
 
 export default class Temperature {
   @observable unit = "C";
@@ -21,5 +25,19 @@ export default class Temperature {
       case "F": return this.temperatureFahrenheit + "*F";
       case "C": return this.temperatureCelsius + "*C";
     }
+  }
+
+  @action setUnit(newUnit) {
+    this.unit = newUnit;
+  }
+
+  @action setCelsius(degrees) {
+    this.temperatureCelsius = degrees;
+  }
+
+  @action("update temperature and unit")
+  setTemperatureAndUnit(degrees, unit) {
+    this.setCelsius(degrees);
+    this.setUnit(unit);
   }
 };
