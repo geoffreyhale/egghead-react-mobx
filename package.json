@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-babel",
+  "name": "egghead-react-mobx",
   "version": "1.0.0",
-  "description": "React with Webpack and Babel",
+  "description": "Egghead React Mobx",
   "main": "index.js",
   "scripts": {
     "start": "webpack --mode development && open dist/index.html",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geoffreyhale/react-webpack-babel.git"
+    "url": "git+https://github.com/geoffreyhale/egghead-react-mobx.git"
   },
   "author": "Geoffrey Hale",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/geoffreyhale/react-webpack-babel/issues"
+    "url": "https://github.com/geoffreyhale/egghead-react-mobx/issues"
   },
-  "homepage": "https://github.com/geoffreyhale/react-webpack-babel#readme",
+  "homepage": "https://github.com/geoffreyhale/egghead-react-mobx#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
