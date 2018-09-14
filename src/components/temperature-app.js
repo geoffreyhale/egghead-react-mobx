@@ -14,8 +14,6 @@ window.Temperature = Temperature;
 
 const temps = observable([]);
 temps.push(new Temperature());
-temps.push(new Temperature());
-temps.push(new Temperature());
 
 const TemperatureApp = observer(({ temperatures }) => (
   <ul>

@@ -10,15 +10,41 @@ configure({
 });
 
 export default class Temperature {
-  constructor(location, temperatureCelsius = 25, unit = "C") {
-    extendObservable;
-  }
   @observable
   unit = "C";
   @observable
   temperatureCelsius = 25;
   @observable
   location = "Amsterdam, NL";
+  @observable
+  loading = true;
+
+  constructor(location, temperatureCelsius = 25, unit = "C") {
+    this.location = location;
+    this.fetch();
+  }
+
+  @action
+  fetch() {
+    const APPID = "@todo";
+    window
+      .fetch(
+        `http://api.openweathermap.org/data/2.5/weather?q=${
+          this.location
+        }&APPID=${APPID}`
+      )
+      .then(res => {
+        console.log(res);
+        res.json();
+      })
+      .then(
+        action(json => {
+          console.log(json.main);
+          this.temperatureCelsius = json.main.temp - 273.15;
+          this.loading = false;
+        })
+      );
+  }
 
   @computed
   get temperatureFahrenheit() {
