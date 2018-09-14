@@ -11,13 +11,15 @@ window.Temperature = Temperature;
 //   "Rome": new Temperature()
 // });
 //console: temps.set("Tel Aviv", new Temperature());
-window.temps = [];
-temps.push(new Temperature(20, "K"));
-temps.push(new Temperature(25, "F"));
-temps.push(new Temperature(20, "C"));
+
+const temps = observable([]);
+temps.push(new Temperature());
+temps.push(new Temperature());
+temps.push(new Temperature());
 
 const TemperatureApp = observer(({ temperatures }) => (
   <ul>
+    <TemperatureInput temperatures={temperatures} />
     {temperatures.map(t => (
       <TView key={t.id} temperature={t} />
     ))}
@@ -26,10 +28,41 @@ const TemperatureApp = observer(({ temperatures }) => (
 ));
 
 @observer
+class TemperatureInput extends React.Component {
+  @observable
+  input = "";
+
+  render() {
+    return (
+      <li>
+        Destination
+        <input onChange={this.onChange} value={this.input} />
+        <button onClick={this.onSubmit}>Add</button>
+      </li>
+    );
+  }
+
+  @action
+  onChange = e => {
+    this.input = e.target.value;
+  };
+
+  @action
+  onSubmit = () => {
+    this.props.temperatures.push(new Temperature(this.input));
+    this.input = "";
+  };
+}
+
+@observer
 class TView extends React.Component {
   render() {
     const t = this.props.temperature;
-    return <li onClick={this.onTemperatureClick}>{t.temperature}</li>;
+    return (
+      <li onClick={this.onTemperatureClick}>
+        {t.location}:{t.loading ? "loading..." : t.temperature}
+      </li>
+    );
   }
 
   @action
@@ -39,5 +72,5 @@ class TView extends React.Component {
 }
 
 export default function() {
-  return <TemperatureApp temperatures={window.temps} />;
+  return <TemperatureApp temperatures={temps} />;
 }

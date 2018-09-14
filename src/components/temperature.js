@@ -10,13 +10,15 @@ configure({
 });
 
 export default class Temperature {
-  constructor(temperatureCelsius, unit) {
+  constructor(location, temperatureCelsius = 25, unit = "C") {
     extendObservable;
   }
   @observable
   unit = "C";
   @observable
   temperatureCelsius = 25;
+  @observable
+  location = "Amsterdam, NL";
 
   @computed
   get temperatureFahrenheit() {
