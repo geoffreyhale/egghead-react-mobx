@@ -1,6 +1,6 @@
 import React from "react";
 import { action, observable } from "mobx";
-import { observer } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import DevTools from "mobx-react-devtools";
 import Temperature from "./temperature";
 
@@ -14,6 +14,7 @@ const TemperatureApp = observer(["temperatures"], ({ temperatures }) => (
   </ul>
 ));
 
+@inject("temperatures")
 @observer
 class TemperatureInput extends React.Component {
   @observable
