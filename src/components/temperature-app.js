@@ -2,22 +2,11 @@ import React from "react";
 import { action, observable } from "mobx";
 import { observer } from "mobx-react";
 import DevTools from "mobx-react-devtools";
-
 import Temperature from "./temperature";
 
-window.Temperature = Temperature;
-// window.temps = observable.map({
-//   "Amsterdam": new Temperature(),
-//   "Rome": new Temperature()
-// });
-//console: temps.set("Tel Aviv", new Temperature());
-
-const temps = observable([]);
-temps.push(new Temperature());
-
-const TemperatureApp = observer(({ temperatures }) => (
+const TemperatureApp = observer(["temperatures"], ({ temperatures }) => (
   <ul>
-    <TemperatureInput temperatures={temperatures} />
+    <TemperatureInput />
     {temperatures.map(t => (
       <TView key={t.id} temperature={t} />
     ))}
@@ -70,5 +59,5 @@ class TView extends React.Component {
 }
 
 export default function() {
-  return <TemperatureApp temperatures={temps} />;
+  return <TemperatureApp />;
 }
