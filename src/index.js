@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { observable } from "mobx";
 import { Provider } from "mobx-react";
 
-import Counter from "./components/counter";
+import Counter from "./components/views/CounterApp";
 import Temperature from "./components/models/Temperature";
 import TemperatureApp from "./components/views/TemperatureApp";
 

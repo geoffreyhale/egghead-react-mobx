@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { action } from "mobx";
 import { observer } from "mobx-react";
-import appState from "../stores/app";
+import appState from "./stores";
 
 @observer
 export default class Counter extends Component {
