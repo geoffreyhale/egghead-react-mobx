@@ -1,9 +1,6 @@
 import React from "react";
-import { action, computed, configure, extendObservable } from "mobx";
-import { observer } from "mobx-react";
+import { action, computed, configure } from "mobx";
 import { observable } from "mobx";
-import { Component } from "react";
-import { IncomingMessage } from "http";
 
 configure({
   enforceActions: "observed"
@@ -26,24 +23,25 @@ export default class Temperature {
 
   @action
   fetch() {
-    const APPID = "@todo";
-    window
-      .fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=${
-          this.location
-        }&APPID=${APPID}`
-      )
-      .then(res => {
-        console.log(res);
-        res.json();
-      })
-      .then(
-        action(json => {
-          console.log(json.main);
-          this.temperatureCelsius = json.main.temp - 273.15;
-          this.loading = false;
-        })
-      );
+    // const APPID = "@todo";
+    // window
+    //   .fetch(
+    //     `http://api.openweathermap.org/data/2.5/weather?q=${
+    //       this.location
+    //     }&APPID=${APPID}`
+    //   )
+    //   .then(res => {
+    //     console.log(res);
+    //     res.json();
+    //   })
+    //   .then(
+    //     action(json => {
+    //       console.log(json.main);
+    this.temperatureCelsius = 26; //@todo remove
+    //       this.temperatureCelsius = json.main.temp - 273.15;
+    this.loading = false;
+    //     })
+    //   );
   }
 
   @computed

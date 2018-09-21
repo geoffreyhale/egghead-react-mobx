@@ -5,11 +5,11 @@ import { observable } from "mobx";
 import { Provider } from "mobx-react";
 
 import Counter from "./components/counter";
-import Temperature from "./components/temperature";
-import TemperatureApp from "./components/temperature-app";
+import Temperature from "./components/models/Temperature";
+import TemperatureApp from "./components/views/TemperatureApp";
 
 const temps = observable([]);
-temps.push(new Temperature());
+temps.push(new Temperature("Santa Barbara, CA", 72, "F"));
 
 const Index = () => {
   return (
