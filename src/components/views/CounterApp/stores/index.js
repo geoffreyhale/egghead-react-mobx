@@ -1,15 +1,15 @@
 import { observable } from "mobx";
 
-const appState = observable({
+const counterState = observable({
   count: 0
 });
 
-appState.increment = function() {
+counterState.increment = function() {
   this.count++;
 };
 
-appState.decrement = function() {
+counterState.decrement = function() {
   this.count--;
 };
 
-export default appState;
+export default counterState;

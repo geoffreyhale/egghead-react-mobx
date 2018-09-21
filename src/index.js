@@ -4,18 +4,16 @@ import ReactDOM from "react-dom";
 import { observable } from "mobx";
 import { Provider } from "mobx-react";
 
+import temperatures from "./stores/temperatures";
 import Counter from "./components/views/CounterApp";
 import Temperature from "./components/models/Temperature";
 import TemperatureApp from "./components/views/TemperatureApp";
-
-const temps = observable([]);
-temps.push(new Temperature("Santa Barbara, CA", 72, "F"));
 
 const Index = () => {
   return (
     <div>
       <Counter />
-      <Provider temperatures={temps}>
+      <Provider temperatures={temperatures}>
         <TemperatureApp />
       </Provider>
     </div>

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { action } from "mobx";
 import { observer } from "mobx-react";
-import appState from "./stores";
+import counterState from "./stores";
 
 @observer
 export default class Counter extends Component {
   render() {
     return (
       <div>
-        Counter: {appState.count} <br />
+        Counter: {counterState.count} <br />
         <button onClick={this.handleInc}> + </button>
         <button onClick={this.handleDec}> - </button>
       </div>
@@ -17,11 +17,11 @@ export default class Counter extends Component {
 
   @action
   handleInc = () => {
-    appState.increment();
+    counterState.increment();
   };
 
   @action
   handleDec = () => {
-    appState.decrement();
+    counterState.decrement();
   };
 }
